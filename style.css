@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: #1f1f2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  position: relative;
+  width: 260px;
+  height: 260px;
+}
+
+.main-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background: #fff;
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.5s ease;
+}
+
+/* Ranglar */
+.wa { color: #25d366; }
+.call { color: #0a7a3c; }
+.ig { color: #c13584; }
+.tt { color: #000; }
+.ttz { color: #ff0050; }
+.yt { color: #ff0000; }
+.fb { color: #1877f2; }
+.other { color: #555; }
+
+/* OCHILGAN HOLAT */
+.menu.active .item:nth-child(2) { transform: translate(-50%, -140px) scale(1); }
+.menu.active .item:nth-child(3) { transform: translate(60px, -100px) scale(1); }
+.menu.active .item:nth-child(4) { transform: translate(120px, 0) scale(1); }
+.menu.active .item:nth-child(5) { transform: translate(60px, 100px) scale(1); }
+.menu.active .item:nth-child(6) { transform: translate(-50%, 140px) scale(1); }
+.menu.active .item:nth-child(7) { transform: translate(-160px, 100px) scale(1); }
+.menu.active .item:nth-child(8) { transform: translate(-200px, 0) scale(1); }
+.menu.active .item:nth-child(9) { transform: translate(-160px, -100px) scale(1); }
