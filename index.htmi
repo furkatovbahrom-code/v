@@ -1,0 +1,114 @@
+from textwrap import dedent
+
+html = dedent("""
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruscha So'z Yodlash</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px}
+.container{max-width:700px;margin:auto;background:#fff;padding:20px;border-radius:18px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+h1{text-align:center}
+.card{padding:20px;border:1px solid #ddd;border-radius:15px;margin-top:15px}
+button{padding:12px 16px;border:none;border-radius:12px;background:#2d89ef;color:#fff;font-size:16px;cursor:pointer;margin:6px}
+.option{display:block;width:100%;text-align:left;background:#eee;color:#000}
+.correct{background:#b7f5c0!important}
+.wrong{background:#ffb3b3!important}
+input{width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;font-size:18px}
+#progress{font-weight:bold}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🇷🇺 Ruscha O‘rganish</h1>
+<p id="progress"></p>
+<div class="card">
+<h2 id="question"></h2>
+<div id="answers"></div>
+<div id="typing" style="display:none">
+<input id="answerInput" placeholder="Ruschasini yozing">
+<button onclick="checkTyping()">Tekshirish</button>
+</div>
+<p id="result"></p>
+<button onclick="nextQuestion()">Keyingi</button>
+</div>
+</div>
+
+<script>
+const words=[
+{ru:"Как",uz:"qanday",ex:[["Как дела?","Ishlar qanday?"],["Как сделать?","Qanday qilish kerak?"],["Как тебя зовут?","Isming nima?"]]},
+{ru:"Тут",uz:"shu yerda",ex:[["Я тут","Men shu yerdaman"],["Сиди тут","Shu yerda o‘tir"],["Кто тут?","Bu yerda kim bor?"]]},
+{ru:"Ты",uz:"sen",ex:[["Ты где?","Sen qayerdasan?"],["Ты понял?","Sen tushundingmi?"],["Ты дома?","Sen uydamisan?"]]},
+{ru:"Я",uz:"men",ex:[["Я устал","Men charchadim"],["Я дома","Men uydaman"],["Я иду","Men ketyapman"]]},
+{ru:"Мне",uz:"menga",ex:[["Дай мне телефон","Menga telefon ber"],["Мне нужно","Menga kerak"],["Помоги мне","Menga yordam ber"]]},
+{ru:"Ваш",uz:"sizning",ex:[["Ваш телефон","Sizning telefoningiz"],["Ваш дом","Sizning uyingiz"],["Это ваш?","Bu siznikimi?"]]},
+{ru:"Наш",uz:"bizning",ex:[["Наш дом","Bizning uy"],["Наш магазин","Bizning do‘kon"],["Это наш стол","Bu bizning stol"]]},
+{ru:"Это",uz:"bu",ex:[["Это что?","Bu nima?"],["Это мой телефон","Bu mening telefonim"],["Это хорошо","Bu yaxshi"]]},
+{ru:"На",uz:"ustida/ga",ex:[["На столе","Stol ustida"],["Иди на работу","Ishga bor"],["На!","Mana, ol!"]]},
+{ru:"Не",uz:"emas/yo‘q",ex:[["Не знаю","Bilmayman"],["Не хочу","Xohlamayman"],["Это не мой","Bu meniki emas"]]},
+{ru:"В",uz:"ichida/ga",ex:[["В доме","Uy ichida"],["В школе","Maktabda"],["В комнате","Xonada"]]},
+{ru:"Так",uz:"shunday",ex:[["Делай так","Shunday qil"],["Так хорошо","Shunday yaxshi"],["Почему так?","Nega shunday?"]]},
+{ru:"По",uz:"bo‘yicha/orqali",ex:[["По работе","Ish bo‘yicha"],["По телефону","Telefon orqali"],["По дороге","Yo‘l bo‘ylab"]]},
+{ru:"К",uz:"oldiga/tomon",ex:[["Иду к другу","Do‘stim oldiga ketyapman"],["К доктору","Doktor oldiga"],["Иди к маме","Onang oldiga bor"]]}
+];
+
+let quiz=[],index=0,score=0,current="";
+function shuffle(a){return a.sort(()=>Math.random()-0.5)}
+
+words.forEach(w=>{
+ quiz.push({type:"choice",q:w.ru,a:w.uz,opts:shuffle([w.uz,...shuffle(words.filter(x=>x.uz!==w.uz).map(x=>x.uz)).slice(0,2)])});
+ quiz.push({type:"typing",q:w.uz,a:w.ru});
+ w.ex.forEach(e=>{
+   quiz.push({type:"choice",q:e[0],a:e[1],opts:shuffle([e[1],...shuffle(words.flatMap(x=>x.ex.map(y=>y[1])).filter(z=>z!==e[1])).slice(0,2)])});
+ });
+});
+shuffle(quiz);
+
+function render(){
+ if(index>=quiz.length){
+ document.querySelector('.card').innerHTML="<h2>Tugadi 🎉</h2><p>Ball: "+score+" / "+quiz.length+"</p><button onclick='location.reload()'>Qayta boshlash</button>";
+ return;
+ }
+ let q=quiz[index];
+ document.getElementById("progress").innerText=`${index+1}/${quiz.length} | Ball: ${score}`;
+ document.getElementById("question").innerText=q.q;
+ document.getElementById("result").innerText="";
+ document.getElementById("answers").innerHTML="";
+ document.getElementById("typing").style.display="none";
+ current=q.a;
+ if(q.
+ type==="choice"){
+ q.opts.forEach(o=>{
+ let b=document.createElement("button");
+ b.className="option";
+ b.innerText=o;
+ b.onclick=()=>checkOption(o,b);
+ answers.appendChild(b);
+ });
+ } else {
+ document.getElementById("typing").style.display="block";
+ document.getElementById("answerInput").value="";
+ }
+}
+function checkOption(v,b){
+ if(v===current){b.classList.add("correct");score++;result.innerText="✅ To‘g‘ri"}
+ else {b.classList.add("wrong");result.innerText="❌ To‘g‘ri javob: "+current}
+}
+function checkTyping(){
+ let v=document.getElementById("answerInput").value.trim().toLowerCase();
+ if(v===current.toLowerCase()){score++;result.innerText="✅ To‘g‘ri"}
+ else result.innerText="❌ To‘g‘ri javob: "+current;
+}
+function nextQuestion(){index++;render();}
+render();
+</script>
+</body>
+</html>
+""")
+
+path="/mnt/data/index.html"
+with open(path,"w",encoding="utf-8") as f:
+    f.write(html)
+print(path)
