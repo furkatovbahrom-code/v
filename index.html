@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Ruscha So'z Yodlash</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.header h1{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.header p{
+    opacity:.8;
+}
+
+.card{
+    background:white;
+    color:#111;
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.top-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+.progress-bar{
+    width:100%;
+    height:12px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:linear-gradient(to right,#22c55e,#16a34a);
+    transition:.3s;
+}
+
+.mode{
+    background:#e2e8f0;
+    padding:10px;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+.question{
+    font-size:30px;
+    text-align:center;
+    margin-bottom:25px;
+    font-weight:bold;
+}
+
+.answers{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.option{
+    border:none;
+    background:#f1f5f9;
+    padding:18px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:18px;
+    transition:.2s;
+    font-weight:bold;
+}
+
+.option:hover{
+    transform:scale(1.02);
+}
+
+.correct{
+    background:#22c55e !important;
+    color:white;
+}
+
+.wrong{
+    background:#ef4444 !important;
+    color:white;
+}
+
+.input-area{
+    display:none;
+}
+
+input{
+    width:100%;
+    padding:18px;
+    border-radius:20px;
+    border:2px solid #ddd;
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+.check-btn,
+.next-btn,
+.restart-btn{
+    border:none;
+    background:#2563eb;
+    color:white;
+    padding:16px;
+    width:100%;
+    border-radius:20px;
+    font-size:18px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.next-btn{
+    margin-top:15px;
+}
+
+.result{
+    margin-top:20px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.hidden{
+    display:none;
+}
+
+.finish{
+    text-align:center;
+}
+
+.finish h2{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.finish p{
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+@media(max-width:600px){
+    .question{
+        font-size:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+    <h1>🇷🇺 Ruscha So‘z Yodlash</h1>
+    <p>14 ta so‘z + 42 ta misol</p>
+</div>
+
+<div class="card" id="app">
+
+<div class="top-info">
+    <span id="progressText">1 / 56</span>
+    <span id="scoreText">Ball: 0</span>
+</div>
+
+<div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<div class="mode" id="modeText">
+    Ruscha → O‘zbekcha
+</div>
+
+<div class="question" id="question">
+    Как
+</div>
+
+<div class="answers" id="answers">
+</div>
+
+<div class="input-area" id="typingArea">
+
+<input
+id="answerInput"
+type="text"
+placeholder="Ruschasini yozing..."
+/>
+
+<button class="check-btn" onclick="checkTyping()">
+Tekshirish
+</button>
+
+</div>
+
+<div class="result" id="result"></div>
+
+<button class="next-btn" onclick="nextQuestion()">
+Keyingi →
+</button>
+
+</div>
+
+</div>
+
+<script>
