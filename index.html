@@ -4,180 +4,180 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Ruscha So'z Yodlash</title>
+<title>Ruscha So‘z Yodlash</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#0f172a,#1e293b);
-    color:white;
-    min-height:100vh;
-    padding:20px;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+min-height:100vh;
+padding:20px;
+color:white;
 }
 
 .container{
-    max-width:700px;
-    margin:auto;
+max-width:700px;
+margin:auto;
 }
 
 .header{
-    text-align:center;
-    margin-bottom:20px;
+text-align:center;
+margin-bottom:20px;
 }
 
 .header h1{
-    font-size:34px;
-    margin-bottom:10px;
+font-size:34px;
+margin-bottom:8px;
 }
 
 .header p{
-    opacity:.8;
+opacity:.8;
 }
 
 .card{
-    background:white;
-    color:#111;
-    border-radius:25px;
-    padding:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
+background:white;
+color:#111827;
+border-radius:28px;
+padding:22px;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
-.top-info{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:20px;
-    font-weight:bold;
+.top{
+display:flex;
+justify-content:space-between;
+font-weight:bold;
+margin-bottom:16px;
 }
 
-.progress-bar{
-    width:100%;
-    height:12px;
-    background:#ddd;
-    border-radius:20px;
-    overflow:hidden;
-    margin-bottom:20px;
+.progress{
+width:100%;
+height:12px;
+background:#e5e7eb;
+border-radius:999px;
+overflow:hidden;
+margin-bottom:20px;
 }
 
-.progress-fill{
-    width:0%;
-    height:100%;
-    background:linear-gradient(to right,#22c55e,#16a34a);
-    transition:.3s;
+.progressFill{
+height:100%;
+width:0%;
+background:linear-gradient(to right,#22c55e,#16a34a);
+transition:.3s;
 }
 
 .mode{
-    background:#e2e8f0;
-    padding:10px;
-    border-radius:12px;
-    text-align:center;
-    margin-bottom:20px;
-    font-weight:bold;
+background:#e2e8f0;
+padding:12px;
+border-radius:16px;
+text-align:center;
+font-weight:bold;
+margin-bottom:20px;
 }
 
 .question{
-    font-size:30px;
-    text-align:center;
-    margin-bottom:25px;
-    font-weight:bold;
+font-size:32px;
+font-weight:bold;
+text-align:center;
+margin-bottom:25px;
 }
 
 .answers{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+display:flex;
+flex-direction:column;
+gap:12px;
 }
 
 .option{
-    border:none;
-    background:#f1f5f9;
-    padding:18px;
-    border-radius:20px;
-    cursor:pointer;
-    font-size:18px;
-    transition:.2s;
-    font-weight:bold;
+border:none;
+padding:18px;
+border-radius:18px;
+background:#f1f5f9;
+cursor:pointer;
+font-size:18px;
+font-weight:bold;
+transition:.2s;
 }
 
 .option:hover{
-    transform:scale(1.02);
+transform:scale(1.02);
 }
 
 .correct{
-    background:#22c55e !important;
-    color:white;
+background:#22c55e !important;
+color:white;
 }
 
 .wrong{
-    background:#ef4444 !important;
-    color:white;
+background:#ef4444 !important;
+color:white;
 }
 
-.input-area{
-    display:none;
+.inputBox{
+display:none;
+margin-top:10px;
 }
 
 input{
-    width:100%;
-    padding:18px;
-    border-radius:20px;
-    border:2px solid #ddd;
-    font-size:20px;
-    margin-bottom:15px;
+width:100%;
+padding:18px;
+font-size:20px;
+border-radius:16px;
+border:2px solid #cbd5e1;
+margin-bottom:12px;
 }
 
-.check-btn,
-.next-btn,
-.restart-btn{
-    border:none;
-    background:#2563eb;
-    color:white;
-    padding:16px;
-    width:100%;
-    border-radius:20px;
-    font-size:18px;
-    cursor:pointer;
-    font-weight:bold;
+.btn{
+border:none;
+background:#2563eb;
+color:white;
+width:100%;
+padding:16px;
+font-size:18px;
+border-radius:16px;
+cursor:pointer;
+font-weight:bold;
 }
 
-.next-btn{
-    margin-top:15px;
+.btn:hover{
+opacity:.92;
 }
 
 .result{
-    margin-top:20px;
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+margin-top:15px;
+min-height:35px;
 }
 
-.hidden{
-    display:none;
+.nextBtn{
+margin-top:15px;
 }
 
 .finish{
-    text-align:center;
+text-align:center;
 }
 
 .finish h2{
-    font-size:35px;
-    margin-bottom:15px;
+font-size:36px;
+margin-bottom:10px;
 }
 
 .finish p{
-    font-size:24px;
-    margin-bottom:20px;
+font-size:24px;
+margin-bottom:15px;
 }
 
 @media(max-width:600px){
-    .question{
-        font-size:25px;
-    }
+.question{
+font-size:26px;
+}
 }
 </style>
 </head>
@@ -187,41 +187,40 @@ input{
 <div class="container">
 
 <div class="header">
-    <h1>🇷🇺 Ruscha So‘z Yodlash</h1>
-    <p>14 ta so‘z + 42 ta misol</p>
+<h1>🇷🇺 Ruscha So‘z Yodlash</h1>
+<p>14 ta so‘z + 42 ta misol</p>
 </div>
 
 <div class="card" id="app">
 
-<div class="top-info">
-    <span id="progressText">1 / 56</span>
-    <span id="scoreText">Ball: 0</span>
+<div class="top">
+<div id="progressText">1 / 56</div>
+<div id="scoreText">Ball: 0</div>
 </div>
 
-<div class="progress-bar">
-    <div class="progress-fill" id="progressFill"></div>
+<div class="progress">
+<div class="progressFill" id="progressFill"></div>
 </div>
 
 <div class="mode" id="modeText">
-    Ruscha → O‘zbekcha
+Ruscha → O‘zbekcha
 </div>
 
 <div class="question" id="question">
-    Как
+Как
 </div>
 
-<div class="answers" id="answers">
-</div>
+<div class="answers" id="answers"></div>
 
-<div class="input-area" id="typingArea">
+<div class="inputBox" id="inputBox">
 
 <input
 id="answerInput"
 type="text"
 placeholder="Ruschasini yozing..."
-/>
+>
 
-<button class="check-btn" onclick="checkTyping()">
+<button class="btn" onclick="checkTyping()">
 Tekshirish
 </button>
 
@@ -229,7 +228,7 @@ Tekshirish
 
 <div class="result" id="result"></div>
 
-<button class="next-btn" onclick="nextQuestion()">
+<button class="btn nextBtn" onclick="nextQuestion()">
 Keyingi →
 </button>
 
@@ -238,3 +237,388 @@ Keyingi →
 </div>
 
 <script>
+const words = [
+{
+ru:"Как",
+uz:"qanday",
+examples:[
+["Как дела?","Ishlar qanday?"],
+["Как сделать?","Qanday qilish kerak?"],
+["Как тебя зовут?","Isming nima?"]
+]
+},
+{
+ru:"Тут",
+uz:"shu yerda",
+examples:[
+["Я тут","Men shu yerdaman"],
+["Сиди тут","Shu yerda o‘tir"],
+["Кто тут?","Bu yerda kim bor?"]
+]
+},
+{
+ru:"Ты",
+uz:"sen",
+examples:[
+["Ты где?","Sen qayerdasan?"],
+["Ты понял?","Sen tushundingmi?"],
+["Ты дома?","Sen uydamisan?"]
+]
+},
+{
+ru:"Я",
+uz:"men",
+examples:[
+["Я устал","Men charchadim"],
+["Я дома","Men uydaman"],
+["Я иду","Men ketyapman"]
+]
+},
+{
+ru:"Мне",
+uz:"menga",
+examples:[
+["Дай мне телефон","Menga telefon ber"],
+["Мне нужно","Menga kerak"],
+["Помоги мне","Menga yordam ber"]
+]
+},
+{
+ru:"Ваш",
+uz:"sizning",
+examples:[
+["Ваш телефон","Sizning telefoningiz"],
+["Ваш дом","Sizning uyingiz"],
+["Это ваш?","Bu siznikimi?"]
+]
+},
+{
+ru:"Наш",
+uz:"bizning",
+examples:[
+["Наш дом","Bizning uy"],
+["Наш магазин","Bizning do‘kon"],
+["Это наш стол","Bu bizning stol"]
+]
+},
+{
+ru:"Это",
+uz:"bu",
+examples:[
+["Это что?","Bu nima?"],
+["Это мой телефон","Bu mening telefonim"],
+["Это хорошо","Bu yaxshi"]
+]
+},
+{
+ru:"На",
+uz:"ustida/ga",
+examples:[
+["На столе","Stol ustida"],
+["Иди на работу","Ishga bor"],
+["На!","Mana, ol!"]
+]
+},
+{
+ru:"Не",
+uz:"emas/yo‘q",
+examples:[
+["Не знаю","Bilmayman"],
+["Не хочу","Xohlamayman"],
+["Это не мой","Bu meniki emas"]
+]
+},
+{
+ru:"В",
+uz:"ichida/ga",
+examples:[
+["В доме","Uy ichida"],
+["В школе","Maktabda"],
+["В комнате","Xonada"]
+]
+},
+{
+ru:"Так",
+uz:"shunday",
+examples:[
+["Делай так","Shunday qil"],
+["Так хорошо","Shunday yaxshi"],
+["Почему так?","Nega shunday?"]
+]
+},
+{
+ru:"По",
+uz:"bo‘yicha/orqali",
+examples:[
+["По работе","Ish bo‘yicha"],
+["По телефону","Telefon orqali"],
+["По дороге","Yo‘l bo‘ylab"]
+]
+},
+{
+ru:"К",
+uz:"oldiga/tomon",
+examples:[
+["Иду к другу","Do‘stim oldiga ketyapman"],
+["К доктору","Doktor oldiga"],
+["Иди к маме","Onang oldiga bor"]
+]
+}
+];
+
+let quiz = [];
+let currentIndex = 0;
+let score = 0;
+let currentAnswer = "";
+let answered = false;
+
+function shuffle(arr){
+return arr.sort(() => Math.random() - 0.5);
+}
+
+function randomWrongAnswers(correct){
+const pool = words
+.map(w=>w.uz)
+.filter(x=>x!==correct);
+
+return shuffle(pool).slice(0,2);
+}
+
+function buildQuiz(){
+
+words.forEach(word=>{
+
+quiz.push({
+type:"choice",
+mode:"Ruscha → O‘zbekcha",
+question:word.ru,
+answer:word.uz,
+options:shuffle([
+word.uz,
+...randomWrongAnswers(word.uz)
+])
+});
+
+quiz.push({
+type:"typing",
+mode:"O‘zbekcha → Ruscha",
+question:word.uz,
+answer:word.ru
+});
+
+word.examples.forEach(ex=>{
+
+const wrong = shuffle(
+words
+.flatMap(w=>w.examples.map(e=>e[1]))
+.filter(x=>x!==ex[1])
+).slice(0,2);
+
+quiz.push({
+type:"choice",
+mode:"Misol tarjima",
+question:ex[0],
+answer:ex[1],
+options:shuffle([
+ex[1],
+...wrong
+])
+});
+
+});
+
+});
+
+quiz = shuffle(quiz);
+
+}
+function renderQuestion(){
+
+answered = false;
+
+const q = quiz[currentIndex];
+
+document.getElementById("question").innerText =
+q.question;
+
+document.getElementById("modeText").innerText =
+q.mode;
+
+document.getElementById("result").innerText = "";
+
+document.getElementById("progressText").innerText =
+(currentIndex + 1) + " / " + quiz.length;
+
+document.getElementById("scoreText").innerText =
+"Ball: " + score;
+
+document.getElementById("progressFill").style.width =
+((currentIndex + 1) / quiz.length * 100) + "%";
+
+const answersDiv =
+document.getElementById("answers");
+
+answersDiv.innerHTML = "";
+
+document.getElementById("inputBox")
+.style.display = "none";
+
+if(q.type === "choice"){
+
+q.options.forEach(option=>{
+
+const btn =
+document.createElement("button");
+
+btn.className = "option";
+
+btn.innerText = option;
+
+btn.onclick = () =>
+checkAnswer(option, btn);
+
+answersDiv.appendChild(btn);
+
+});
+
+}else{
+
+document.getElementById("inputBox")
+.style.display = "block";
+
+document.getElementById("answerInput")
+.value = "";
+
+}
+
+currentAnswer = q.answer;
+
+}
+
+function checkAnswer(selected, btn){
+
+if(answered) return;
+
+answered = true;
+
+const result =
+document.getElementById("result");
+
+const buttons =
+document.querySelectorAll(".option");
+
+buttons.forEach(b=>{
+
+if(
+b.innerText === currentAnswer
+){
+b.classList.add("correct");
+}
+
+});
+
+if(selected === currentAnswer){
+
+score++;
+
+btn.classList.add("correct");
+
+result.innerText =
+"✅ To‘g‘ri";
+
+}else{
+
+btn.classList.add("wrong");
+
+result.innerText =
+"❌ To‘g‘ri javob: "
++ currentAnswer;
+
+}
+
+document.getElementById("scoreText")
+.innerText =
+"Ball: " + score;
+
+}
+
+function checkTyping(){
+
+if(answered) return;
+
+answered = true;
+
+const input =
+document.getElementById(
+"answerInput"
+).value.trim().toLowerCase();
+
+const result =
+document.getElementById("result");
+
+if(
+input ===
+currentAnswer.toLowerCase()
+){
+
+score++;
+
+result.innerText =
+"✅ To‘g‘ri";
+
+}else{
+
+result.innerText =
+"❌ To‘g‘ri javob: "
++ currentAnswer;
+
+}
+
+document.getElementById("scoreText")
+.innerText =
+"Ball: " + score;
+
+}
+
+function nextQuestion(){
+
+if(currentIndex < quiz.length - 1){
+
+currentIndex++;
+
+renderQuestion();
+
+}else{
+
+document.getElementById("app")
+.innerHTML = `
+<div class="finish">
+<h2>🎉 Tugadi</h2>
+
+<p>
+Natija:
+<b>${score}</b>
+/
+<b>${quiz.length}</b>
+</p>
+
+<button
+class="btn"
+onclick="location.reload()"
+>
+Qayta boshlash
+</button>
+
+</div>
+`;
+
+}
+
+}
+
+buildQuiz();
+renderQuestion();
+
+</script>
+</body>
+</html>
